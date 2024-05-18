@@ -1,0 +1,32 @@
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model User {
+  id            String   @id @default(uuid())
+  firstName     String
+  lastName      String
+  email         String   @unique
+  companyName   String
+  companySize   Int
+  expenses      String
+  cloudServices String
+  password      String
+  tickets       Ticket[] @relation("UserTickets")
+}
+
+model Ticket {
+  id          String   @id @default(uuid())
+  title       String
+  description String
+  status      String   @default("To Do")
+  userId      String
+  user        User     @relation(fields: [userId], references: [id], name: "UserTickets")
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}

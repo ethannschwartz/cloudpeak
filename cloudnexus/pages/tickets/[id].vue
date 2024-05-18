@@ -1,0 +1,70 @@
+<template>
+  <div v-if="ticket">
+    <NuxtLink to="/tickets" class="w-fit opacity-50 hover:opacity-100 duration-150 font-medium flex items-center gap-1">
+      <i class="fi flex items-center fi-rr-arrow-small-left"></i>
+      Back
+    </NuxtLink>
+    <PageHeader :text="ticket.title" :subtitle="ticket.subtitle">
+      <template #options>
+        <LazyStatusDropdown @select="updateTicketStatus($event)" :ticket="ticket"  />
+      </template>
+      <template #subtitle>
+        <div class="flex items-center gap-3">
+          <span class="text-sm opacity-50">#{{ ticket.id.substring(0,7) }}</span>•
+          <span class="text-sm opacity-50">{{ DateTime.fromISO(ticket.createdAt).toFormat('DDDD') }}</span>
+        </div>
+      </template>
+    </PageHeader>
+    <p class="mb-8">{{ ticket.description }}</p>
+    <button class="btn-delete ml-auto" @click="deleteTicket">Delete Ticket</button>
+  </div>
+</template>
+
+<script setup>
+import {DateTime} from "luxon";
+
+const route = useRoute();
+const ticket = ref(null);
+
+definePageMeta({
+  layout: 'authenticated',
+  middleware: 'auth',
+});
+
+const fetchTicket = async () => {
+  const tickets = await $fetch('/api/tickets', {
+    method: "get",
+  });
+  ticket.value = tickets.find(t => t.id === route.params.id);
+};
+
+const deleteTicket = async () => {
+  let isConfirmed = window.confirm('Are you sure you want to delete this ticket?');
+
+  if(isConfirmed) {
+    await $fetch('/api/tickets', {
+      method: 'DELETE',
+      body: {id: ticket.value.id}
+    });
+    navigateTo('/tickets');
+  }
+};
+
+onMounted(() => {
+  fetchTicket();
+});
+
+const updateTicketStatus = async (status) => {
+  ticket.value.status = status;
+  await $fetch('/api/tickets', {
+    method: 'PUT',
+    body: {
+      id: ticket.value?.id,
+      title: ticket.value?.title,
+      description: ticket.value?.description,
+      status: status ?? 'To do',
+      userId: useState('user').value?.id,
+    }
+  });
+}
+</script>

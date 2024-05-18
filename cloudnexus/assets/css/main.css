@@ -1,0 +1,65 @@
+@import "@flaticon/flaticon-uicons/css/all/all.rounded.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.type-primary {
+    @apply text-black dark:text-white;
+}
+
+.type-secondary {
+    @apply text-zinc-600 dark:text-zinc-400
+}
+
+.type-theme {
+    @apply text-emerald-600 dark:text-emerald-400;
+}
+
+[class*="btn-"] {
+    @apply flex gap-1 items-center font-bold tracking-wide text-sm rounded-lg duration-150 hover:scale-105 px-4 py-2 disabled:opacity-50 disabled:pointer-events-none;
+}
+
+.btn-primary {
+    @apply bg-black hover:bg-zinc-800 active:scale-105 text-white;
+}
+
+.btn-secondary {
+    @apply bg-transparent hover:bg-black/5 active:ring-2 ring-offset-0 ring-emerald-400 text-black;
+}
+
+.btn-tertiary {
+    @apply bg-transparent hover:ring-2 active:ring-0 active:bg-zinc-100 dark:active:bg-zinc-800 ring-emerald-400;
+}
+
+.btn-delete {
+    @apply bg-transparent text-red-500 hover:bg-zinc-100 active:bg-zinc-200 dark:active:bg-zinc-800 ring-red-400;
+}
+
+.btn-link {
+    @apply bg-transparent dark:hover:bg-zinc-950 active:ring-2 ring-emerald-400;
+}
+
+[class*="input-"] {
+    @apply focus-within:ring-2 ring-emerald-400 outline-0 flex gap-1 items-center dark:text-white dark:placeholder-zinc-500 text-sm rounded-lg duration-150 py-2 px-3;
+}
+
+.input-secondary {
+    @apply bg-zinc-100 dark:bg-zinc-800 hover:bg-zinc-200 dark:hover:bg-zinc-700 focus-within:bg-zinc-100 dark:focus-within:bg-zinc-700 placeholder-zinc-200;
+}
+
+.input-primary {
+    @apply border dark:border-zinc-700 dark:bg-zinc-900 dark:hover:bg-zinc-800 dark:focus-within:bg-zinc-800 dark:placeholder-zinc-300;
+}
+
+.card-tier-1 {
+    @apply p-6 rounded-xl border border-zinc-200 dark:border-zinc-700 bg-zinc-100 dark:bg-zinc-800;
+}
+
+.card-tier-2 {
+    @apply p-6 rounded-xl border border-zinc-200 dark:border-zinc-700 bg-zinc-100 dark:bg-zinc-900;
+}
+
+.border-primary {
+    @apply border-zinc-200 dark:border-zinc-800;
+}

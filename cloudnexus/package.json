@@ -1,0 +1,30 @@
+{
+  "name": "nuxt-app",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare"
+  },
+  "dependencies": {
+    "@flaticon/flaticon-uicons": "^3.2.1",
+    "@prisma/client": "^5.14.0",
+    "bcrypt": "^5.1.1",
+    "luxon": "^3.4.4",
+    "mysql2": "^3.9.7",
+    "nuxt": "^3.11.2",
+    "v-click-outside": "^3.2.0",
+    "vue": "^3.4.27",
+    "vue-router": "^4.3.2"
+  },
+  "devDependencies": {
+    "@types/bcrypt": "^5.0.2",
+    "autoprefixer": "^10.4.19",
+    "postcss": "^8.4.38",
+    "prisma": "^5.14.0",
+    "tailwindcss": "^3.4.3"
+  }
+}
