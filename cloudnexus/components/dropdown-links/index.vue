@@ -1,5 +1,5 @@
 <template>
-  <span class="z-50 shadow-md text-left block absolute top-full right-0 mt-1 w-56 bg-white rounded-xl border border-black overflow-hidden p-2">
+  <span class="z-[100] shadow-md text-left block absolute top-full right-0 mt-1 w-56 bg-white rounded-xl border border-black overflow-hidden p-2">
     <span v-for="link in links" class="block w-full">
       <NuxtLink
           v-if="typeof link.path === 'string'"

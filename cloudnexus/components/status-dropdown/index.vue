@@ -11,7 +11,7 @@
           'text-xs px-2 py-0.5': small,
           'px-3 py-1': !small
         }"
-        class="whitespace-nowrap duration-150 font-medium tracking-wide text-sm rounded-lg"
+        class="whitespace-nowrap duration-150 font-medium tracking-wide text-sm rounded-lg capitalize"
     >
       {{ ticket.status }}
     </button>

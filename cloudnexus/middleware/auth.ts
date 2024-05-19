@@ -1,10 +1,21 @@
+// middleware/auth.ts
 export default defineNuxtRouteMiddleware((to, from) => {
-    console.log('Hi from Nuxt Middleware!', useState('user').value)
+    const user = useCookie('userCookie');
+    const userState = useState('user', () => user);
 
-    // const user = useState('user'); // Adjust this to your state management logic
-    //
-    // if (!user.value) {
-    //     // Redirect to login page
-    //     return navigateTo('/login');
-    // }
+    user.value = userState.value;
+
+    console.log('user:',user.value);
+
+    if (!userState.value && to.path !== '/login') {
+        return navigateTo('/login');
+    }
+
+    // Allow navigation if user is authenticated or is on the login page
+    if (userState.value || to.path === '/login') {
+        return true;
+    }
+
+    // Default navigation
+    return navigateTo(to.fullPath);
 });

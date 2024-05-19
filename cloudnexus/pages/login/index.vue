@@ -21,7 +21,6 @@
   </section>
 </template>
 <script setup>
-
 const isProcessing = ref(false);
 const errorMessage = ref('');
 
@@ -52,6 +51,7 @@ const submit = async () => {
       };
       // Set the user state
       useState('user', () => data?.user);
+      useCookie({...data?.user});
 
       // Redirect to the dashboard page
       navigateTo('/dashboard');

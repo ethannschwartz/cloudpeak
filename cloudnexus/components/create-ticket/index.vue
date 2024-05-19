@@ -1,5 +1,5 @@
 <template>
-  <div class="z-40 flex items-center justify-center fixed inset-0 bg-black/10">
+  <div class="z-[100] flex items-center justify-center fixed inset-0 bg-black/10">
     <div class="z-50 p-8 bg-white rounded-2xl border border-black shadow-2xl max-w-2xl w-full h-fit">
       <h2 class="font-bold text-xl mb-4">Create a Ticket</h2>
       <form class="max-w-2xl" @submit.prevent="createTicket">
