@@ -16,7 +16,11 @@
       <span class="text-sm opacity-40">{{ DateTime.fromISO(ticket.createdAt).toFormat('DD') }}</span>
     </div>
     <div class="w-32 flex justify-end">
-      <StatusDropdown :ticket="ticket" @select="handleStatusUpdate(ticket, $event)" />
+      <StatusDropdown
+          :ticket="ticket"
+          @select="handleStatusUpdate(ticket, $event)"
+          :small="false"
+      />
     </div>
   </div>
 </template>
