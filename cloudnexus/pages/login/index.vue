@@ -5,6 +5,10 @@
       <form @submit.prevent="submit">
           <input type="email" v-model="form.email" placeholder="Email" class="input-primary w-full mb-4">
           <input type="password" v-model="form.password" placeholder="Password" class="input-primary w-full mb-4">
+          <NuxtLink to="/register" class="link">
+            Don't have an account?
+            <i class="fi fi-rr-arrow-small-right flex items-center" />
+          </NuxtLink>
           <button type="submit" :disabled="!isFormValid || isProcessing || errorMessage?.length" class="absolute bottom-4 right-4 btn-primary">
             <span v-if="!isProcessing" class="flex items-center gap-1">
               Log in

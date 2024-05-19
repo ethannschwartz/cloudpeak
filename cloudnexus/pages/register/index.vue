@@ -39,6 +39,10 @@
             </div>
         </transition>
 
+          <NuxtLink to="/login" class="link">
+            Already have an account?
+            <i class="fi fi-rr-arrow-small-right flex items-center" />
+          </NuxtLink>
         <button v-if="step > 0" @click="backStep" type="button" class="absolute bottom-4 left-4 btn-secondary">
             <i class="fi fi-rr-arrow-left flex items-center text-sm"></i>
             Back

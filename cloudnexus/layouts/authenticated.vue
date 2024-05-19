@@ -1,5 +1,5 @@
 <template>
-  <div v-if="useState('user')">
+  <div v-if="useState('user')" class="relative h-screen flex flex-col">
     <header class="border-b flex items-center justify-between gap-4 py-4 px-8">
       <h1 class="flex items-center gap-1.5 font-bold">
         <span class="text-white p-1.5 rounded-full bg-black">
@@ -19,10 +19,9 @@
           <LazyDropdownLinks v-if="isDropdownOpen" :links="dropdownLinks" />
         </Transition>
       </button>
-
     </header>
-    <div class="flex">
-      <aside class="shrink-0 py-8 pl-8 w-64">
+    <div class="flex grow">
+      <aside class="sticky h-fit top-0 shrink-0 py-8 pl-8 w-64">
         <ul>
           <li v-for="link in authenticatedRoutes">
             <NuxtLink
@@ -37,7 +36,7 @@
           </li>
         </ul>
       </aside>
-      <main class="grow p-8">
+      <main class="border-red-500 grow p-8">
         <slot />
       </main>
     </div>
@@ -68,7 +67,7 @@ const authenticatedRoutes = [
   },
   {
     name: 'Chat Support',
-    path: '/',
+    path: '/support',
   },
   {
     name: 'Tickets',

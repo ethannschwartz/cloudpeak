@@ -1,8 +1,10 @@
 export default defineNuxtRouteMiddleware((to, from) => {
-    const user = useState('user'); // Adjust this to your state management logic
+    console.log('Hi from Nuxt Middleware!', useState('user').value)
 
-    if (!user.value) {
-        // Redirect to login page
-        return navigateTo('/login');
-    }
+    // const user = useState('user'); // Adjust this to your state management logic
+    //
+    // if (!user.value) {
+    //     // Redirect to login page
+    //     return navigateTo('/login');
+    // }
 });

@@ -9,12 +9,12 @@
           'bg-amber-600/10 text-amber-600 hover:bg-amber-600/20': ticket.status.toLowerCase() === 'in review',
           'bg-green-600/10 text-green-600 hover:bg-green-600/20': ticket.status.toLowerCase() === 'done',
         }"
-        class="duration-150 font-medium tracking-wide text-sm rounded-lg px-3 py-1"
+        class="whitespace-nowrap duration-150 font-medium tracking-wide text-sm rounded-lg px-3 py-1"
     >
       {{ ticket.status }}
     </button>
     <Transition :name="isDropdownOpen ? 'fade-up' : 'fade-down'">
-      <span v-if="isDropdownOpen" class="shadow-md text-left block absolute top-full right-0 mt-1 w-56 bg-white rounded-xl border border-black overflow-hidden p-2">
+      <span v-if="isDropdownOpen" class="z-20 shadow-md text-left block absolute top-full right-0 mt-1 w-56 bg-white rounded-xl border border-black overflow-hidden p-2">
     <span v-for="status in statuses" class="block w-full">
       <button
           :class="`w-full text-left block duration-150 py-1 px-2 rounded-md hover:text-${status.color}-600 hover:bg-${status.color}-600/10 active:bg-${status.color}-600/10 active:scale-95`"
@@ -38,8 +38,9 @@
 </template>
 
 <script setup>
-defineProps(['ticket']);
+const props = defineProps(['ticket']);
 defineEmits(['select']);
+
 const isDropdownOpen = ref(false);
 
 const toggleDropdown = () => {
@@ -49,7 +50,6 @@ const toggleDropdown = () => {
 const closeDropdown = () => {
   isDropdownOpen.value = false;
 };
-
 const statuses = [
   {
     name: 'To Do',

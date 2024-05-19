@@ -9,7 +9,8 @@
         </div>
         <div class="w-full mb-4">
           <label for="description" class="font-medium">Description</label>
-          <textarea v-model="description" rows="6" id="description" class="mt-1 w-full input-primary" required></textarea>
+          <TextEditor v-model="description" id="description" class="mt-4 w-full h-80" />
+<!--          <textarea v-model="description" rows="6" id="description" class="mt-1 w-full input-primary" required></textarea>-->
         </div>
         <div class="flex flex-row-reverse items-center gap-4">
           <button type="submit" :disabled="!title || !description || isProcessing" class="btn-primary">

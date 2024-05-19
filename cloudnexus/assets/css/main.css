@@ -36,8 +36,8 @@
     @apply bg-transparent text-red-500 hover:bg-zinc-100 active:bg-zinc-200 dark:active:bg-zinc-800 ring-red-400;
 }
 
-.btn-link {
-    @apply bg-transparent dark:hover:bg-zinc-950 active:ring-2 ring-emerald-400;
+.link {
+    @apply flex w-fit duration-150 rounded-lg items-center gap-1 opacity-50 hover:opacity-100 bg-transparent dark:hover:bg-zinc-950 active:ring-2 ring-emerald-400;
 }
 
 [class*="input-"] {
