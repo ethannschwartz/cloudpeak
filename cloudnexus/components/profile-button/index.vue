@@ -30,8 +30,8 @@ const dropdownLinks = computed(() => [
       useState('user', () => null);
 
       // Clear the cookie
-      const userCookie = useCookie('user');
-      userCookie.value = null;
+      // const userCookie = useCookie('user');
+      // userCookie.value = null;
 
       // Navigate to login page
       navigateTo('/login');
