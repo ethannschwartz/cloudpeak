@@ -10,7 +10,7 @@ export default defineEventHandler(async (event) => {
         data: {
             title: body.title,
             description: body.description,
-            status: body.status ?? 'To do',
+            status: body.status,
             userId: body.userId,
         }
     });

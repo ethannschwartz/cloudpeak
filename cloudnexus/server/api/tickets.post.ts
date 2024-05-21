@@ -1,5 +1,6 @@
 import { PrismaClient } from '@prisma/client';
 import { readBody } from 'h3';
+import {verifyToken} from "~/utils/jwt-auth";
 
 const prisma = new PrismaClient();
 

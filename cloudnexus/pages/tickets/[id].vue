@@ -16,8 +16,14 @@
         </div>
       </template>
     </PageHeader>
-    <TextEditor class="mb-8" v-model="ticket.description" />
-    <button class="btn-delete ml-auto" @click="deleteTicket">Delete Ticket</button>
+    <div>
+      <TextEditor
+          class="mb-8"
+          v-model="ticket.description"
+          :can-update="true"
+          :ticket="ticket" />
+    </div>
+    <button class="btn-delete ml-auto" @click="deleteTicket(ticket)">Delete Ticket</button>
   </div>
 </template>
 
@@ -31,7 +37,6 @@ definePageMeta({
   layout: 'authenticated',
   middleware: 'auth',
 });
-
 
 onMounted(() => {
   fetchTicket(ticket);
