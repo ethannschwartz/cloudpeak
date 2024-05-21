@@ -17,7 +17,7 @@
 const dropdownLinks = computed(() => [
   {
     name: 'Company Profile',
-    path: '/',
+    path: '/profile',
   },
   {
     name: 'User Settings',

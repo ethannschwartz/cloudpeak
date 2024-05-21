@@ -44,6 +44,7 @@ const createTicket = async () => {
       description: description.value,
       status: 'To do',
       userId: useState('user').value?.id,
+      user: useState('user').value,
     }
   });
   title.value = '';

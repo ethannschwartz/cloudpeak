@@ -6,13 +6,15 @@ const prisma = new PrismaClient();
 export default defineEventHandler(async (event) => {
     const body = await readBody(event);
 
-    const newTicket = await prisma.ticket.create({
-        data: {
-            title: body.title,
-            description: body.description,
-            status: body.status ?? 'To do',
-            userId: body.user,
-        }
-    });
-    return newTicket;
+    if(!!body.user) {
+        const newTicket = await prisma.ticket.create({
+            data: {
+                title: body.title,
+                description: body.description,
+                status: body.status ?? 'To do',
+                userId: body.user.id,
+            }
+        });
+        return newTicket;
+    }
 });
