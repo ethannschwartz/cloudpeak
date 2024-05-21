@@ -13,6 +13,7 @@
     "@flaticon/flaticon-uicons": "^3.2.1",
     "@prisma/client": "^5.14.0",
     "bcrypt": "^5.1.1",
+    "jsonwebtoken": "^9.0.2",
     "luxon": "^3.4.4",
     "mysql2": "^3.9.7",
     "nitropack": "^2.9.6",
@@ -25,6 +26,7 @@
   },
   "devDependencies": {
     "@types/bcrypt": "^5.0.2",
+    "@types/jsonwebtoken": "^9.0.6",
     "autoprefixer": "^10.4.19",
     "postcss": "^8.4.38",
     "prisma": "^5.14.0",

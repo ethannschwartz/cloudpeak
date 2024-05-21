@@ -38,12 +38,13 @@ useSeoMeta({
 
 const form = ref({
   email: 'e.schwartz@me.com',
-  password: 'password',
+  password: 'Shalom123!',
 });
 
 const isEmailValid = (email) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 
 const isFormValid = computed(() => {
+  errorMessage.value = '';
   return isEmailValid(form.value.email) && form.value.password !== '';
 });
 
@@ -57,15 +58,11 @@ const submit = async () => {
         body: form.value,
       });
       console.log('Form submitted successfully:', data);
-      form.value = {
-        email: '',
-        password: '',
-      };
-      // Set the user state
+      form.value = { email: '', password: '' };
       useState('user', () => data?.user);
-      useCookie({...data?.user});
 
-      // Redirect to the dashboard page
+      localStorage.setItem('token', data?.token);
+
       navigateTo('/dashboard');
     } catch (err) {
       console.error('Unexpected error:', err);
@@ -75,5 +72,6 @@ const submit = async () => {
     }
   }
 };
+
 
 </script>

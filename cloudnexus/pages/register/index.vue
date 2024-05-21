@@ -137,27 +137,27 @@ const isFormValid = computed(() => {
 });
 
 const submit = async () => {
-  if (isFormValid.value) {
+  if (isFormValid.value && !errorMessage.value) {
     isProcessing.value = true;
     errorMessage.value = '';
     try {
-      const {data} = await $fetch('/api/register', {
+      const data = await $fetch('/api/register', {
         method: 'POST',
         body: form.value,
       });
       console.log('Form submitted successfully:', data);
-      isComplete.value = true;
       form.value = {
-        firstName: '',
-        lastName: '',
         email: '',
-        companyName: '',
-        companySize: null,
-        expenses: '',
-        cloudServices: '',
         password: '',
-        confirmPassword: ''
       };
+      console.log('data', data);
+
+      // Set the user state
+      useState('user', () => data.user);
+      useCookie('token', data.token); // Store JWT in cookie
+
+      // Redirect to the dashboard page
+      navigateTo('/dashboard');
     } catch (err) {
       console.error('Unexpected error:', err);
       errorMessage.value = err.statusMessage;
@@ -224,12 +224,12 @@ const cloudProviders = ref([
 .slide-right-leave-to,
 .slide-left-enter-from {
   opacity: 0;
-  transform: translateX(100%);
+  transform: translateX(10%);
 }
 
 .slide-right-enter-from,
 .slide-left-leave-to {
   opacity: 100%;
-  transform: translateX(-100%);
+  transform: translateX(-10%);
 }
 </style>

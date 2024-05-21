@@ -1,21 +1,43 @@
-// middleware/auth.ts
-export default defineNuxtRouteMiddleware((to, from) => {
-    const user = useCookie('userCookie');
-    const userState = useState('user', () => user);
+export default defineNuxtRouteMiddleware(async (to, from) => {
 
-    user.value = userState.value;
+    if (process.server) return;
 
-    console.log('user:',user.value);
+    const token = localStorage.getItem('token');
 
-    if (!userState.value && to.path !== '/login') {
+    if (!token && to.path !== '/login') {
         return navigateTo('/login');
     }
 
-    // Allow navigation if user is authenticated or is on the login page
-    if (userState.value || to.path === '/login') {
-        return true;
-    }
+    if (token) {
+        try {
+            const data = await $fetch('/api/verify-token', {
+                method: 'POST',
+                body: { token }
+            });
 
-    // Default navigation
-    return navigateTo(to.fullPath);
+            console.log('Verification response:', data);
+
+            if (data?.status === 'success') {
+                useState('user', () => data.user);
+                if (to.path === '/login') {
+                    return navigateTo('/dashboard');
+                }
+                return true;
+            } else {
+                if (to.path !== '/login') {
+                    return navigateTo('/login');
+                }
+            }
+        } catch (error) {
+            console.error('Verification failed:', error);
+            if (to.path !== '/login') {
+                return navigateTo('/login');
+            }
+        }
+    } else {
+        if (to.path !== '/login') {
+            console.log('No token, redirecting to login');
+            return navigateTo('/login');
+        }
+    }
 });
