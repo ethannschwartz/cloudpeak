@@ -37,7 +37,7 @@
 }
 
 .link {
-    @apply flex w-fit duration-150 rounded-lg items-center gap-1 opacity-50 hover:opacity-100 bg-transparent dark:hover:bg-zinc-950 active:ring-2 ring-emerald-400;
+    @apply duration-150 font-medium hover:text-emerald-600 text-sm w-fit rounded-lg flex items-center gap-1.5 p-0.5 hover:bg-zinc-50 active:bg-zinc-100;
 }
 
 [class*="input-"] {

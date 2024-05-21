@@ -1,8 +1,15 @@
 <template>
-  <span class="loader"></span>
+  <span
+      :class="{
+        'chat-loader': chat,
+        'loader': !chat,
+      }"
+  ></span>
 </template>
 
-<script setup></script>
+<script setup>
+defineProps(['chat']);
+</script>
 
 <style scoped>
 .loader {
@@ -32,5 +39,25 @@
   50%  {clip-path:polygon(50% 50%,0 0,100% 0,100% 100%,100% 100%,100% 100%)}
   75%  {clip-path:polygon(50% 50%,0 0,100% 0,100% 100%,0 100%,0 100%)}
   100% {clip-path:polygon(50% 50%,0 0,100% 0,100% 100%,0 100%,0 0)}
+}
+
+.chat-loader {
+  width: 24px;
+  height: 24px;
+  border: 2px dashed rgba(0, 0, 0, 0.2);
+  border-radius: 50%;
+  display: inline-block;
+  position: relative;
+  box-sizing: border-box;
+  animation: rotation 2.5s linear infinite;
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 </style>

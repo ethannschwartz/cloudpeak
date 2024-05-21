@@ -1,14 +1,16 @@
 <template>
   <section class="w-full mt-36 flex items-center justify-center">
-    <div class="relative p-6 w-full max-w-lg h-80 rounded-2xl border border-black overflow-hidden">
-      <h1 class="font-bold text-3xl mb-8">Log in to your company account</h1>
+    <div class="flex flex-col gap-8 relative p-6 w-full max-w-md h-96 rounded-2xl overflow-hidden">
+      <CompanyLogo />
+      <h1 class="font-bold text-3xl">Log in to your company account</h1>
       <form @submit.prevent="submit">
           <input type="email" v-model="form.email" placeholder="Email" class="input-primary w-full mb-4">
           <input type="password" v-model="form.password" placeholder="Password" class="input-primary w-full mb-4">
-          <NuxtLink to="/register" class="link">
-            Don't have an account?
-            <i class="fi fi-rr-arrow-small-right flex items-center" />
-          </NuxtLink>
+        <div class="flex gap-1 items-center ">
+          <NuxtLink to="/register" class="link">Don't have an account?</NuxtLink>
+          <span class="opacity-25">•</span>
+          <NuxtLink class="link" to="/about">Learn more</NuxtLink>
+        </div>
           <button type="submit" :disabled="!isFormValid || isProcessing || errorMessage?.length" class="absolute bottom-4 right-4 btn-primary">
             <span v-if="!isProcessing" class="flex items-center gap-1">
               Log in
@@ -23,6 +25,16 @@
 <script setup>
 const isProcessing = ref(false);
 const errorMessage = ref('');
+
+definePageMeta({
+  layout: '',
+});
+
+useSeoMeta({
+  title: 'Login',
+  description: `Login to ${useState('companyName').value} to manage and enhance your cloud systems with our expert DevOps solutions. Ensure optimal performance and security for your business.`,
+  keywords: `${useState('companyName').value}, DevOps login, cloud solutions login, WS systems login, cloud infrastructure, DevOps services login, business cloud solutions login`
+});
 
 const form = ref({
   email: 'e.schwartz@me.com',

@@ -15,6 +15,13 @@
 </template>
 
 <script setup>
+const companyName = useState('companyName').value;
+
+useSeoMeta({
+  title: `FAQ`,
+  description: `Find answers to frequently asked questions about ${companyName}'s DevOps solutions and services. Get information on how we can help enhance and maintain your cloud systems.`,
+  keywords: `FAQ, ${companyName}, frequently asked questions, DevOps solutions, cloud systems, WS systems, cloud infrastructure, DevOps services`
+});
 
 const isOpen = ref(0);
 

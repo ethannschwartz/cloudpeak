@@ -25,6 +25,15 @@
 </template>
 
 <script setup>
+const companyName = useState('companyName').value;
+
+useSeoMeta({
+  title: `Contact Us`,
+  description: `Get in touch with ${companyName} for inquiries about our DevOps solutions and services. Contact our team to learn how we can enhance and maintain your cloud systems.`,
+  keywords: `Contact ${companyName}, ${companyName} contact, DevOps solutions, cloud systems, WS systems, cloud infrastructure, DevOps services`
+});
+
+
 const contactForm = reactive({
   name: '',
   email: '',
