@@ -33,6 +33,7 @@ import { ref, nextTick } from 'vue';
 
 definePageMeta({
   layout: "authenticated",
+  middleware: 'auth',
 });
 
 const message = ref('');

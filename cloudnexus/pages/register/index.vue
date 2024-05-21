@@ -150,11 +150,11 @@ const submit = async () => {
         email: '',
         password: '',
       };
-      console.log('data', data);
 
       // Set the user state
-      useState('user', () => data.user);
-      useCookie('token', data.token); // Store JWT in cookie
+      useState('user', () => data?.user);
+
+      localStorage.setItem('token', data?.token);
 
       // Redirect to the dashboard page
       navigateTo('/dashboard');

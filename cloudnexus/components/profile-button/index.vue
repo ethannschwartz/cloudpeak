@@ -16,12 +16,8 @@
 <script setup>
 const dropdownLinks = computed(() => [
   {
-    name: 'Company Profile',
+    name: 'Profile',
     path: '/profile',
-  },
-  {
-    name: 'User Settings',
-    path: '/',
   },
   {
     name: 'Log out',
