@@ -84,15 +84,15 @@ const errorMessage = ref('');
 const isComplete = ref(false);
 
 const form = ref({
-  firstName: 'Ethan',
-  lastName: 'Schwartz',
-  email: 'e.schwartz@me.com',
-  companyName: 'SECLOCK',
-  companySize: 240,
-  expenses: '10400',
+  firstName: '',
+  lastName: '',
+  email: '',
+  companyName: '',
+  companySize: 0,
+  expenses: '0',
   cloudServices: 'aws',
-  password: 'password',
-  confirmPassword: 'password'
+  password: '',
+  confirmPassword: ''
 });
 
 const isEmailValid = (email) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);

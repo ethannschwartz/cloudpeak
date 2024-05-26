@@ -37,8 +37,8 @@ useSeoMeta({
 });
 
 const form = ref({
-  email: 'e.schwartz@me.com',
-  password: 'Shalom123!',
+  email: '',
+  password: '',
 });
 
 const isEmailValid = (email) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
