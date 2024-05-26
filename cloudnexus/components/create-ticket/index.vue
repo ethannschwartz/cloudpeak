@@ -37,6 +37,7 @@ const createTicket = async () => {
   setTimeout(() => {
     isProcessing.value = false;
   }, 1500);
+
   await $fetch('/api/tickets', {
     method: 'POST',
     body: {

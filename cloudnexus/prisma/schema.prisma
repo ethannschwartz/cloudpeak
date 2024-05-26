@@ -18,6 +18,8 @@ model User {
   cloudServices String
   password      String
   tickets       Ticket[] @relation("UserTickets")
+  comments      Comment[] @relation("UserComments")
+
 }
 
 model Ticket {
@@ -27,6 +29,18 @@ model Ticket {
   status      String   @default("To Do")
   userId      String
   user        User     @relation(fields: [userId], references: [id], name: "UserTickets")
+  comments    Comment[] @relation("TicketComments")
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
+}
+
+model Comment {
+  id        String   @id @default(uuid())
+  content   String
+  userId    String
+  ticketId  String
+  user      User     @relation(fields: [userId], references: [id], name: "UserComments")
+  ticket    Ticket   @relation(fields: [ticketId], references: [id], name: "TicketComments")
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }

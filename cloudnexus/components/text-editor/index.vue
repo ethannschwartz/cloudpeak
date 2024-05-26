@@ -29,9 +29,9 @@ const props = defineProps(['modelValue', 'ticket', 'canUpdate']);
 
 const emit = defineEmits(['update:modelValue']);
 
-let initialDescription = ref(props.ticket.description);
+let initialDescription = ref(props.ticket?.description);
 
-const showSaveButton = computed(() => props.ticket.description !== initialDescription.value);
+const showSaveButton = computed(() => props.ticket?.description !== initialDescription?.value);
 
 function save() {
   updateTicketDescription(props.ticket, props.ticket.description);
